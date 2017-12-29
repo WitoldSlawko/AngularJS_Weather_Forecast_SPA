@@ -13,7 +13,7 @@
     </select>
 </div>
 
-<h1>City: {{displayCity.city.name}}</h1>
+<h1 ng-if="displayCity.city.name">City: {{displayCity.city.name}}</h1>
 
 <div class="display">
     <div class="singleton"  ng-style="{'background-image':'url(http://openweathermap.org/img/w/' + single.weather[0].icon + '.png)'}" ng-repeat="single in displayCity.list">
