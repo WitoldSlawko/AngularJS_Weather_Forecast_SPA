@@ -1,0 +1,25 @@
+<div class="navi">
+    <div class="ui input focus">
+        <input type="text" placeholder="Enter your city" ng-model = "filtering" ng-change="typing()">
+    </div>
+    <hr>
+    <select id="selector" ng-model="city.Id" ng-change="cityLogger(city.Id)" size={{spectrum}}>
+        <option
+            class="singles"
+            ng-repeat="city in cities | filter: filtering" 
+            ng-selected="cityId == city.id" 
+            value="{{city.id}}"
+        >{{city.name}}</option>
+    </select>
+</div>
+
+<h1>City: {{displayCity.city.name}}</h1>
+
+<div class="display">
+    <div class="singleton"  ng-style="{'background-image':'url(http://openweathermap.org/img/w/' + single.weather[0].icon + '.png)'}" ng-repeat="single in displayCity.list">
+        <weather-report 
+            weather-info="single"
+            temp-calc="convertToCelcius(tempK)">
+        </weather-report>
+    </div>
+</div>

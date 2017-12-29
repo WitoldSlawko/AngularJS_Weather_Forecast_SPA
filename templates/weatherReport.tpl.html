@@ -1,0 +1,45 @@
+<div class="icon" >
+    <div>Date: {{weatherInfo.dt_txt.split(" ")[0] | date :  "dd.MM.y"}}</div>
+    <div>
+        Time:
+        <i ng-if="weatherInfo.dt_txt.split(' ')[1] == '00:00:00' || weatherInfo.dt_txt.split(' ')[1] == '12:00:00'"class="wi wi-time-12"></i>
+        <i ng-if="weatherInfo.dt_txt.split(' ')[1] == '03:00:00' || weatherInfo.dt_txt.split(' ')[1] == '15:00:00'"class="wi wi-time-3"></i>
+        <i ng-if="weatherInfo.dt_txt.split(' ')[1] == '06:00:00' || weatherInfo.dt_txt.split(' ')[1] == '18:00:00'"class="wi wi-time-6"></i>
+        <i ng-if="weatherInfo.dt_txt.split(' ')[1] == '09:00:00' || weatherInfo.dt_txt.split(' ')[1] == '21:00:00'"class="wi wi-time-9"></i>
+        {{weatherInfo.dt_txt.split(" ")[1]}}
+    </div>
+    <div style="font-size: 18px" class="description">
+        {{weatherInfo.weather[0].description}}
+    </div>
+    <div>Temperature: 
+        <i class="wi wi-thermometer"></i>
+        {{tempCalc({tempK: weatherInfo.main.temp})}} C
+    </div>
+    <div>
+        Clouds: 
+        <i class="wi wi-cloudy"></i>
+        {{weatherInfo.clouds.all}}%
+    </div>
+    <div ng-if="weatherInfo.rain['3h']">
+        Rain (3h): 
+        <i class="wi wi-rain"></i> 
+        {{(weatherInfo.rain["3h"]).toFixed(3)}} vol.
+    </div>
+    <div ng-if="weatherInfo.snow['3h']">
+        Snow (3h): 
+        <i class="wi wi-snow"></i>
+        {{(weatherInfo.snow["3h"]).toFixed(3)}} vol.
+    </div>
+    <div>Pressure:
+        <i class="wi wi-barometer"></i> 
+        {{weatherInfo.main.pressure}} hPa
+    </div>
+    <div>Wind speed:
+        <i class="wi wi-strong-wind"></i>  
+        {{weatherInfo.wind.speed}} m/s
+    </div>
+    <div>Humidity: 
+        <i class="wi wi-humidity"></i> 
+        {{weatherInfo.main.humidity}}%
+    </div>
+</div>
